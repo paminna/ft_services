@@ -12,3 +12,7 @@ RUN tar -xzvf phpMyAdmin-5.1.0-all-languages.tar.gz
 RUN rm -rf phpMyAdmin-5.1.0-all-languages.tar.gz
 RUN mv phpMyAdmin-5.1.0-all-languages phpMyAdmin
 
+RUN rm -rf phpMyAdmin/config.sample.inc.php
+COPY config.sample.inc.php phpMyAdmin/
+
+CMD ["/usr/bin/supervisord -c /etc/supervisord.conf"]
