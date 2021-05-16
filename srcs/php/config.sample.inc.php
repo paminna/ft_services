@@ -4,7 +4,7 @@ $cfg['blowfish_secret'] = '';
 $i = 0;
 $i++;
 $cfg['Servers'][$i]['auth_type'] = 'php-svc';
-$cfg['Servers'][$i]['host'] = 'localhost';
+$cfg['Servers'][$i]['host'] = 'mysql-svc:3306';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 $cfg['UploadDir'] = '';
