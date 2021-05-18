@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
 RUN apk update && apk upgrade
-RUN apk add nginx tar
-RUN apk add mariadb-server
+RUN apk add mysql mysql-client openrc
 
+COPY my.conf /etc/mysql/my.cnf
