@@ -13,6 +13,10 @@ RUN rm -rf phpMyAdmin-5.1.0-all-languages.tar.gz
 RUN mv phpMyAdmin-5.1.0-all-languages phpMyAdmin
 
 RUN rm -rf phpMyAdmin/config.sample.inc.php
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY config.sample.inc.php phpMyAdmin/
+COPY ./supervisord.conf /etc/supervisord.conf
 
-CMD ["/usr/bin/supervisord -c /etc/supervisord.conf"]
+EXPOSE 5000
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

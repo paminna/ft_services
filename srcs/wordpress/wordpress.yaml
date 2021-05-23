@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      name: http
+      name: https
       port: 5050
       targetPort: 5050
 ---
@@ -29,7 +29,7 @@ spec:
         app: wordpress
     spec:
       containers:
-      - name:  
+      - name: wordpress
         image: wordpress-image
         imagePullPolicy: Never
         ports:

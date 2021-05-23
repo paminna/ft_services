@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      name: http
+      name: https
       port: 5000
       targetPort: 5000
 ---
@@ -29,7 +29,7 @@ spec:
         app: php
     spec:
       containers:
-      - name:  
+      - name: php 
         image: php-image
         imagePullPolicy: Never
         ports:
