@@ -4,6 +4,7 @@ RUN apk update && apk upgrade
 RUN apk add nginx tar
 RUN apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli
 RUN apk add php7-zlib php7-curl php7-mbstring php7-json php7-session && apk add nginx openssl supervisor
+RUN     mkdir -p /run/nginx
 
 WORKDIR var/www/html
 

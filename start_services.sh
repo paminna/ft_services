@@ -1,5 +1,6 @@
 #!/bin/sh
 
+minikube delete
 minikube start --vm-driver=virtualbox
 eval $(minikube docker-env)
 docker build -t nginx-image ./srcs/nginx
@@ -17,9 +18,6 @@ kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
 docker pull metallb/speaker:v0.8.2
 docker pull metallb/controller:v0.8.2
-
-# wordpress start
-
 
 minikube dashboard
 
