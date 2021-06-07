@@ -4,13 +4,13 @@
 define( 'DB_NAME', 'wordpress' );
 
 /** Имя пользователя MySQL */
-define( 'DB_USER', 'user' );
+define( 'DB_USER', 'admin' );
 
 /** Пароль к базе данных MySQL */
 define( 'DB_PASSWORD', 'password' );
 
 /** Имя сервера MySQL */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mysql-svc:3306' );
 
 /** Кодировка базы данных для создания таблиц. */
 define( 'DB_CHARSET', 'utf8' );
