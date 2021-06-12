@@ -21,10 +21,11 @@ metadata:
   labels:
     app: php
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: php
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

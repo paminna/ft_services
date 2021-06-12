@@ -1,13 +1,13 @@
 <?php
 
 /** Имя базы данных для WordPress */
-define( 'DB_NAME', 'wordpress' );
+define( 'DB_NAME', 'Wordpress' );
 
 /** Имя пользователя MySQL */
-define( 'DB_USER', 'admin' );
+define( 'DB_USER', 'user' );
 
 /** Пароль к базе данных MySQL */
-define( 'DB_PASSWORD', 'password' );
+define( 'DB_PASSWORD', '123' );
 
 /** Имя сервера MySQL */
 define( 'DB_HOST', 'mysql-svc:3306' );

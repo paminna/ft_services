@@ -21,10 +21,11 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: wordpress
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

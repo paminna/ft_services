@@ -1,14 +1,15 @@
 #!/bin/sh
 
-openrc default
-/etc/init.d/mariadb setup
-rc-service mariadb start
+rc default
+/etc/init.d/mysql setup
+rc-service mysql start
 
-mysql -e "CREATE DATABASE wordpress"
-mysql -e "CREATE USER 'admin'@'%' IDENTIFIED BY 'password';"
-mysql -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'%' IDENTIFIED BY 'password';"
+mysql -e "CREATE DATABASE Wordpress;"
+mysql -e "CREATE USER 'user'@'%' IDENTIFIED BY '123';"
+mysql -e "GRANT ALL PRIVILEGES ON Wordpress.* TO 'user'@'%' IDENTIFIED BY '123';"
 mysql -e "FLUSH PRIVILEGES;"
-mysql wordpress < /home/wordpress.sql
+
+# mysql wordpress < /home/wordpress.sql
 
 /usr/bin/supervisord -c /etc/supervisord.conf
 
