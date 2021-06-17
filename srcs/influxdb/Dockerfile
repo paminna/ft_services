@@ -11,8 +11,8 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.18.1_linux_amd64.tar.gz
 RUN tar -zxvf telegraf-1.18.1_linux_amd*64.tar.gz && rm telegraf-1.18.1_linux_amd*64.tar.gz
 # RUN mv telegraf-1.18.1_linux_amd*64 telegraf
-
-RUN mv telegraf.conf /etc/telegraf/telegraf.conf
+COPY telegraf.conf .
+RUN	mv telegraf.conf /etc/telegraf/telegraf.conf
 COPY ./supervisord.conf /etc/supervisord.conf
 
 EXPOSE 8086

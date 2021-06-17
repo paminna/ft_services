@@ -8,8 +8,8 @@ docker build -t php-image ./srcs/php
 docker build -t wordpress-image ./srcs/wordpress
 docker build -t mysql-image ./srcs/mysql
 docker build -t grafana-image ./srcs/grafana
-# docker build -t influxdb-image ./srcs/influxdb
-# docker build -t ftps-image ./srcs/grafana
+docker build -t influx-image ./srcs/influxdb
+docker build -t ftps-image ./srcs/ftps
 minikube addons enable metallb
 # kubectl delete pods
 
@@ -20,8 +20,8 @@ kubectl apply -f ./srcs/php/php.yaml
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
 kubectl apply -f ./srcs/grafana/grafana.yaml
-# kubectl apply -f ./srcs/influxdb/influxdb.yaml
-# kubectl apply -f ./srcs/ftps/ftps.yaml
+kubectl apply -f ./srcs/influxdb/influx.yaml
+kubectl apply -f ./srcs/ftps/ftps.yaml
 docker pull metallb/speaker:v0.8.2
 docker pull metallb/controller:v0.8.2
 

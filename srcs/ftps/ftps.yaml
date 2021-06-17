@@ -9,10 +9,14 @@ spec:
     app: ftps
   type: LoadBalancer
   ports:
-    - protocol: TCP
-      # name: https
-      port: 21
-      # targetPort: 3000
+   - protocol: TCP
+     name: ftpser
+     port: 21
+     targetPort: 21
+   - protocol: TCP
+     name: ftps
+     port: 30021
+     targetPort: 30021
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -37,4 +41,4 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-        # - containerPort: 1500
+        - containerPort: 30021

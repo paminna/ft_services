@@ -28,35 +28,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: influx-deployment
+  labels:
+    app: influx
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: influx
-  minReadySeconds: 5
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: influx
     spec:
-      containers:
-        - image: influx:1.7.4
-          name: influx
-          ports:
-            - containerPort: 8086
-          volumeMounts:
-            - mountPath: /var/lib/influx
-              name: influx-data
-            - mountPath: /etc/influx/influx.conf
-              name: influx-config
-              subPath: influx.conf
-              readOnly: true
-          # envFrom:
-          #   - secretRef:
-          #       name: influxdb-secrets
       volumes:
-        - name: influx-data
-          persistentVolumeClaim:
-            claimName: influx-data
-        - name: influx-config
-          configMap:
-            name: influx-config
+      - name: influx-volume
+        persistentVolumeClaim:
+          claimName: influx-pv-claim
+      containers:
+      - name: influx
+        image: influx-image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8086
+        volumeMounts:
+        - name: influx-volume
+          mountPath: /var/lib/
