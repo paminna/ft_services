@@ -1,7 +1,7 @@
 apiVersion: v1  
 kind: Service  
 metadata:  
-  name: influx-service  
+  name: influx-svc
 spec:  
   selector:  
     app: influx
@@ -42,16 +42,21 @@ spec:
       labels:
         app: influx
     spec:
-      volumes:
-      - name: influx-volume
-        persistentVolumeClaim:
-          claimName: influx-pv-claim
       containers:
       - name: influx
         image: influx-image
         imagePullPolicy: Never
         ports:
-        - containerPort: 8086
+          - containerPort: 8086
         volumeMounts:
-        - name: influx-volume
-          mountPath: /var/lib/
+          - name: influx-storage
+            mountPath: /var/lib/influxdb
+          - name: dockersocket
+            mountPath: /var/run/docker.sock
+      volumes:
+      - name: influx-storage
+        persistentVolumeClaim:
+          claimName: influx-pv-claim
+      - name: dockersocket
+        hostPath:
+          path: /var/run/docker.sock

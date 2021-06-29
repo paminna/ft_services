@@ -5,7 +5,7 @@ RUN apk add mysql mysql-client mariadb openrc --no-cache supervisor
 
 COPY my.cnf /etc/mysql/
 COPY supervisord.conf /etc/supervisord.conf
-# COPY srcs/mysql/wordpress.sql /tools/wordpress.sql
+COPY Wordpress.sql /tools/Wordpress.sql
 EXPOSE 3306
 
 COPY start.sh .
